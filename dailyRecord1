@@ -1,0 +1,32 @@
+# R language
+
+This semester I have a unit related to R language.
+
+In my first assignment, I use functions list below:
+
+table()
+prop.table() : Show propotion in percentage rate.
+summary() : Calculate values like "max", "min", "mean", "median" and so on
+basicStats() : This is related to library "timeSeries" and library "fBasics". I use this to calculate "skewness".
+
+The biggest struggle to me in this assignment is a "For Loop"! Never think about that!
+Task of this for loop is:
+  dat <- read.csv("xxx")
+  for loop this dat, find the attribute "Fraud Flag" value when "Claimed Amount Received" is N/A.
+Firstly I want to do it like in java or in python.
+   for(d in dat){
+      if(is.na(d$Claimed.Amount.Received)){
+        print(d$Fraud.Flag)
+      }
+   }
+But this faild, because d is a vector, and no matter I use d[7] or d[7][7] or d[1:7] or anything like this, it just show me
+the 7th row, nor anything in 7th column. 
+
+After several hours searching, finally I found how to write this in R language. It's like this:
+  for(i in 1:nrow(dat)){
+    if(is.na(dat$Claim.Amount.Received[i])){
+      print(dat$Fraud.Flag[i])
+    }
+  }
+  
+It's a different way to consider how to think about a for loop. I think it could be useful for my future work.
